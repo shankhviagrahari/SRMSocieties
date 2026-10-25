@@ -1,0 +1,10 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SRM Societies</title><link rel="stylesheet" th:href="@{/style.css}"></head><body>
+<header><a class="brand" th:href="@{/categories}">SRM Societies</a><span class="who"><span th:if="${session.admin}" class="badge">ADMIN</span> Hi, <b th:text="${session.name}"></b> &middot; <a th:href="@{/logout}">Logout</a></span></header><main>
+<section class="hero"><h1>Welcome to SRM Societies</h1><p>Discover clubs, explore their teams, meet the current heads and find out when applications open.</p></section>
+<h1>Choose a category</h1>
+<div class="grid big">
+<a class="card c1" th:href="@{/category(name='Cultural')}"><div class="emoji">&#127917;</div><h2>Cultural</h2><p>Dance, drama, literature, fashion and more</p></a>
+<a class="card c2" th:href="@{/category(name='Technical')}"><div class="emoji">&#128187;</div><h2>Technical</h2><p>Coding, robotics, AI and innovation</p></a>
+<a class="card c3" th:href="@{/category(name='Sports')}"><div class="emoji">&#9917;</div><h2>Sports</h2><p>Cricket, football, basketball and more</p></a>
+</div>
+</main></body></html>

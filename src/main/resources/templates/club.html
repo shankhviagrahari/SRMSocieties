@@ -1,0 +1,17 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SRM Societies</title><link rel="stylesheet" th:href="@{/style.css}"></head><body><header><a class="brand" th:href="@{/categories}">SRM Societies</a><span class="who"><span th:if="${session.admin}" class="badge">ADMIN</span> Hi, <b th:text="${session.name}"></b> &middot; <a th:href="@{/logout}">Logout</a></span></header><main>
+<a class="back" th:href="@{/category(name=${club.category})}">&larr; <span th:text="${club.category}"></span> clubs</a>
+<h1 th:text="${club.name}"></h1>
+<p class="intro" th:text="${club.intro}"></p>
+<div class="oop"><b>Under the hood (OOP)</b><br>
+Object class: <code th:text="${club.className} + ' extends ' + ${club.parentName}"></code><br>
+Focus (polymorphic method): <span th:text="${club.focus}"></span></div>
+<div class="admin" th:if="${session.admin}">
+<a class="btn" th:href="@{/admin/club/edit(id=${club.id})}">Edit club</a>
+<a class="btn" th:href="@{/admin/team/new(clubId=${club.id})}">+ Add team</a>
+<form th:action="@{/admin/club/delete}" method="post" onsubmit="return confirm('Delete this club and all its teams?')"><input type="hidden" name="id" th:value="${club.id}"><button class="btn danger">Delete club</button></form>
+</div>
+<h2>Teams</h2>
+<div class="grid">
+<a class="card" th:each="t : ${teams}" th:href="@{/team(id=${t.id})}"><h2 th:text="${t.name}"></h2><p th:text="${t.intro}"></p></a>
+</div>
+</main></body></html>

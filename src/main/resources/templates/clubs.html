@@ -1,0 +1,8 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SRM Societies</title><link rel="stylesheet" th:href="@{/style.css}"></head><body><header><a class="brand" th:href="@{/categories}">SRM Societies</a><span class="who"><span th:if="${session.admin}" class="badge">ADMIN</span> Hi, <b th:text="${session.name}"></b> &middot; <a th:href="@{/logout}">Logout</a></span></header><main>
+<a class="back" th:href="@{/categories}">&larr; Categories</a>
+<h1><span th:text="${category}"></span> Clubs</h1>
+<p th:if="${session.admin}"><a class="btn" th:href="@{/admin/club/new(category=${category})}">+ Add club</a></p>
+<div class="grid">
+<a class="card" th:each="c : ${clubs}" th:href="@{/club(id=${c.id})}"><h2 th:text="${c.name}"></h2><p th:text="${c.intro}"></p></a>
+</div>
+</main></body></html>

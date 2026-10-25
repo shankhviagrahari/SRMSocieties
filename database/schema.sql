@@ -1,0 +1,53 @@
+DROP DATABASE IF EXISTS srmsocieties;
+CREATE DATABASE srmsocieties;
+USE srmsocieties;
+CREATE TABLE students(reg_no VARCHAR(30) PRIMARY KEY, name VARCHAR(100) NOT NULL, is_admin BOOLEAN NOT NULL DEFAULT FALSE, admin_password VARCHAR(100) NULL);
+CREATE TABLE clubs(id INT AUTO_INCREMENT PRIMARY KEY, category VARCHAR(20) NOT NULL, name VARCHAR(100) NOT NULL, intro TEXT);
+CREATE TABLE teams(id INT AUTO_INCREMENT PRIMARY KEY, club_id INT NOT NULL, name VARCHAR(100) NOT NULL, intro TEXT, heads VARCHAR(255), apply_info VARCHAR(255), FOREIGN KEY(club_id) REFERENCES clubs(id));
+
+-- SAMPLE students: replace with real registration numbers
+INSERT INTO students(reg_no,name,is_admin,admin_password) VALUES ('RA2411003010001','Sample Student One',0,NULL),('RA2411003010002','Sample Student Two',0,NULL),('RA2411003010003','Sample Student Three',0,NULL),('ADMIN001','Administrator',1,'admin123');
+
+INSERT INTO clubs(category,name,intro) VALUES ('Cultural','Dance Society','Home to every dance form on campus, from classical to street.');
+INSERT INTO clubs(category,name,intro) VALUES ('Cultural','Drama Society','Stage plays, street plays and theatre workshops throughout the year.');
+INSERT INTO clubs(category,name,intro) VALUES ('Cultural','Literature Society','Debates, poetry, creative writing and book discussions.');
+INSERT INTO clubs(category,name,intro) VALUES ('Cultural','Fashion Society','Runway shows, styling and design for the fashion-minded.');
+INSERT INTO clubs(category,name,intro) VALUES ('Technical','Coding Club','Competitive programming, hackathons and open-source projects.');
+INSERT INTO clubs(category,name,intro) VALUES ('Technical','Robotics Club','Design and build robots for national competitions.');
+INSERT INTO clubs(category,name,intro) VALUES ('Technical','AI & ML Society','Hands-on machine learning projects, talks and study groups.');
+INSERT INTO clubs(category,name,intro) VALUES ('Sports','Cricket Club','University cricket teams, nets and inter-college tournaments.');
+INSERT INTO clubs(category,name,intro) VALUES ('Sports','Football Club','Training and matches for players of all levels.');
+INSERT INTO clubs(category,name,intro) VALUES ('Sports','Basketball Club','Men''s and women''s squads competing at state level.');
+
+-- SAMPLE heads and dates: edit with the real ones
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Plans events, handles logistics, sponsors and publicity.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Dance Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Hip-Hop Team','Street and freestyle choreography.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Dance Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Bharatnatyam Team','Classical South Indian dance.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Dance Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Kathak Team','Classical North Indian dance with rhythm and storytelling.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Dance Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Production, scheduling and outreach.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Drama Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Acting Team','Stage and street theatre performers.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Drama Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Scriptwriting Team','Writes original plays and adaptations.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Drama Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Runs events and publications.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Literature Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Debate Team','Parliamentary and British-style debating.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Literature Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Creative Writing Team','Poetry, prose and the club magazine.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Literature Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Event planning and sponsorship.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Fashion Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Design Team','Concepts and garments for the annual show.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Fashion Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Modelling Team','Runway training and showcases.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Fashion Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Events and community.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Coding Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Competitive Programming Team','Contest training.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Coding Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Web Development Team','Builds campus web projects.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Coding Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Events and budgets.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Robotics Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Mechanical Team','Chassis and mechanisms.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Robotics Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Electronics & Software Team','Circuits and control code.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Robotics Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Events and outreach.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='AI & ML Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Research Team','Papers and experiments.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='AI & ML Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Projects Team','Applied ML builds.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='AI & ML Society';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Fixtures and logistics.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Cricket Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Men''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Cricket Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Women''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Cricket Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Fixtures and logistics.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Football Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Men''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Football Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Women''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Football Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Management','Fixtures and logistics.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Basketball Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Men''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Basketball Club';
+INSERT INTO teams(club_id,name,intro,heads,apply_info) SELECT id,'Women''s Team','University squad.','To be updated (Head 1, Head 2)','Recruitment opens at the start of each semester; check notice boards and Instagram.' FROM clubs WHERE name='Basketball Club';

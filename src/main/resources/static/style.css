@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+:root{--navy:#0b2a5b;--blue:#1d4ed8;--gold:#f5b301;--bg:#f3f6fd;--ink:#16213a;--muted:#5b6785}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins','Segoe UI',Arial,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+a{color:var(--blue)}
+
+/* top bar */
+header{display:flex;justify-content:space-between;align-items:center;padding:14px 32px;background:linear-gradient(90deg,#0b2a5b,#1740a0);color:#fff;position:sticky;top:0;z-index:10;box-shadow:0 4px 18px rgba(11,42,91,.35)}
+header a{color:#fff;text-decoration:none}
+.brand{font-weight:700;font-size:21px;letter-spacing:.3px}
+.brand::before{content:"\2605  ";color:var(--gold)}
+.who{font-size:14px}.who a{background:rgba(255,255,255,.15);padding:6px 14px;border-radius:20px;margin-left:6px}
+.who a:hover{background:rgba(255,255,255,.28)}
+.badge{background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;padding:3px 9px;border-radius:20px;margin-right:6px}
+
+main{max-width:1060px;margin:0 auto;padding:30px 22px 60px}
+h1{font-size:32px;margin:6px 0 4px;color:var(--navy)}
+h2{color:var(--navy)}
+
+/* hero */
+.hero{background:linear-gradient(135deg,#0b2a5b,#2563eb);color:#fff;border-radius:22px;padding:38px 36px;margin-bottom:30px;position:relative;overflow:hidden;box-shadow:0 12px 30px rgba(37,99,235,.28)}
+.hero::after{content:"";position:absolute;right:-60px;top:-60px;width:240px;height:240px;border-radius:50%;background:rgba(245,179,1,.25)}
+.hero h1{color:#fff;font-size:34px;margin:0 0 8px;position:relative;z-index:1}
+.hero p{margin:0;opacity:.9;font-size:16px;position:relative;z-index:1;max-width:560px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;margin:22px 0}
+.card{display:block;position:relative;background:#fff;border-radius:18px;padding:24px 22px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(20,40,90,.08);border:1px solid #e5eaf6;transition:transform .2s,box-shadow .2s;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:linear-gradient(var(--blue),#60a5fa)}
+.card:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(20,40,90,.18)}
+.card h2{margin:0 0 8px;font-size:19px}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.55}
+.c1::before{background:linear-gradient(#ea580c,#fb923c)}
+.c2::before{background:linear-gradient(#1d4ed8,#60a5fa)}
+.c3::before{background:linear-gradient(#15803d,#4ade80)}
+.big .card{padding:34px 26px;text-align:center}
+.big .card::before{left:0;right:0;top:0;bottom:auto;width:auto;height:7px}
+.big .card h2{font-size:24px}
+.emoji{font-size:54px;margin-bottom:10px}
+
+.back{display:inline-block;margin-bottom:10px;text-decoration:none;color:var(--blue);font-weight:500}
+.back:hover{text-decoration:underline}
+.intro{font-size:17px;line-height:1.7;color:#2b3856;max-width:820px}
+
+/* OOP box + panels */
+.oop{background:#eef2ff;border-left:5px solid #4f46e5;padding:14px 18px;border-radius:10px;margin:20px 0;line-height:1.8;font-size:14px}
+code{background:#fff;padding:2px 8px;border-radius:6px;border:1px solid #dfe5f5}
+.panel{background:#fff;padding:8px 24px 16px;border-radius:16px;margin:18px 0;box-shadow:0 4px 16px rgba(20,40,90,.08);border-left:6px solid var(--gold)}
+.panel h3{color:var(--navy)}
+
+/* buttons + admin bar */
+.btn{display:inline-block;background:var(--navy);color:#fff;border:0;border-radius:10px;padding:10px 18px;font:500 14px 'Poppins',sans-serif;text-decoration:none;cursor:pointer;transition:.15s}
+.btn:hover{background:var(--blue);transform:translateY(-1px)}
+.btn.danger{background:#b91c1c}.btn.danger:hover{background:#dc2626}
+.admin{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0;padding:12px 14px;background:#fff8e1;border:1px dashed var(--gold);border-radius:12px}
+.admin form{margin:0}
+
+/* forms */
+.form{background:#fff;padding:26px;border-radius:16px;max-width:620px;box-shadow:0 4px 16px rgba(20,40,90,.1)}
+.form label{display:block;margin:14px 0 5px;font-size:14px;font-weight:500}
+.form input,.form textarea{width:100%;padding:11px 12px;border:1px solid #cfd8ee;border-radius:10px;font:inherit}
+.form input:focus,.form textarea:focus{outline:2px solid #93b4ff;border-color:var(--blue)}
+.form .btn{margin-top:20px}
+
+/* login page */
+body:has(.login){background:radial-gradient(circle at 15% 20%,#2563eb 0,transparent 45%),radial-gradient(circle at 85% 80%,#f5b301 0,transparent 40%),linear-gradient(135deg,#0b2a5b,#16348a);display:flex;align-items:center;justify-content:center;padding:20px}
+.login{width:100%;max-width:400px;background:rgba(255,255,255,.96);padding:36px 32px;border-radius:24px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.login h1{margin:0;color:var(--navy);font-size:30px}
+.login h2{margin:14px 0 2px}
+.sub{color:var(--muted);margin:6px 0 4px;font-size:14px}
+.login label{display:block;margin:14px 0 5px;font-size:14px;font-weight:500}
+.login input{width:100%;padding:12px;border:1px solid #cfd8ee;border-radius:10px;font:inherit}
+.login input:focus{outline:2px solid #93b4ff;border-color:var(--blue)}
+.login button[type=submit]{width:100%;margin-top:22px;padding:13px;background:linear-gradient(90deg,#0b2a5b,#2563eb);color:#fff;border:0;border-radius:12px;font:600 16px 'Poppins',sans-serif;cursor:pointer}
+.login button[type=submit]:hover{filter:brightness(1.12)}
+.login.wide{max-width:520px;text-align:center}
+.login.wide form,.login.wide label{text-align:left}
+.roles{display:flex;gap:18px;justify-content:center;margin:24px 0 6px}
+.role{flex:1;background:#fff;border:2px solid #dbe3f5;border-radius:18px;padding:24px 10px;cursor:pointer;font:600 18px 'Poppins',sans-serif;transition:.2s}
+.role span{display:block;margin-top:8px}
+.r-user{color:#1d4ed8}.r-admin{color:#c2410c}
+.role:hover{transform:translateY(-5px);box-shadow:0 12px 26px rgba(0,0,0,.18);border-color:currentColor}
+.error{background:#fee2e2;color:#991b1b;padding:10px 12px;border-radius:10px;font-size:14px}
+
+@media(max-width:600px){header{padding:12px 16px}.hero{padding:26px 22px}h1,.hero h1{font-size:25px}.roles{flex-direction:column}}

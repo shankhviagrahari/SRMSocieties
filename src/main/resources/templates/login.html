@@ -1,0 +1,33 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SRM Societies</title><link rel="stylesheet" th:href="@{/style.css}"></head><body>
+<div class="login wide"><h1>SRM Societies</h1><p class="sub">Who is logging in?</p>
+<div class="roles" id="roles">
+<button type="button" class="role r-user" onclick="pick('user')"><svg viewBox="0 0 64 64" width="84" height="84" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="32" cy="22" r="11"/><path d="M10 56c2-13 11-20 22-20s20 7 22 20"/></svg><span>Student</span></button>
+<button type="button" class="role r-admin" onclick="pick('admin')"><svg viewBox="0 0 64 64" width="84" height="84" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"><circle cx="32" cy="22" r="11"/><path d="M10 56c2-13 11-20 22-20s20 7 22 20"/><path d="M32 2l7 4 8 0 0 8-4 7" stroke-width="0"/><path d="M50 8l4 2v6c0 4-3 7-4 8-1-1-4-4-4-8v-6z" fill="currentColor" stroke-width="2"/></svg><span>Admin</span></button>
+</div>
+<div id="box" style="display:none">
+<h2 id="title"></h2><p class="sub" id="hint"></p>
+<p class="error" th:if="${error}" th:text="${error}"></p>
+<form th:action="@{/login}" method="post">
+<input type="hidden" name="role" id="role" value="user">
+<label id="idLabel">Registration Number</label><input name="regNo" required>
+<label>Password</label><input name="password" type="password" required>
+<button type="submit">Login</button></form>
+<p><a href="#" onclick="back();return false">&larr; Back</a></p>
+</div></div>
+<script th:inline="javascript">
+function pick(r){
+  document.getElementById('roles').style.display='none';
+  document.getElementById('box').style.display='block';
+  document.getElementById('role').value=r;
+  document.getElementById('title').textContent = r==='admin' ? 'Admin login' : 'Student login';
+  document.getElementById('hint').textContent = r==='admin' ? 'Use your admin Login ID and password.' : 'Your password is your registration number.';
+  document.getElementById('idLabel').textContent = r==='admin' ? 'Login ID' : 'Registration Number';
+}
+function back(){
+  document.getElementById('roles').style.display='flex';
+  document.getElementById('box').style.display='none';
+}
+var startRole = /*[[${role}]]*/ null;
+if (startRole) pick(startRole);
+</script>
+</body></html>

@@ -1,0 +1,9 @@
+<!DOCTYPE html><html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>SRM Societies</title><link rel="stylesheet" th:href="@{/style.css}"></head><body><header><a class="brand" th:href="@{/categories}">SRM Societies</a><span class="who"><span th:if="${session.admin}" class="badge">ADMIN</span> Hi, <b th:text="${session.name}"></b> &middot; <a th:href="@{/logout}">Logout</a></span></header><main>
+<a class="back" th:href="@{/category(name=${category})}">&larr; Cancel</a>
+<h1 th:text="${id == 0} ? 'Add ' + ${category} + ' club' : 'Edit club'"></h1>
+<form class="form" th:action="@{/admin/club/save}" method="post">
+<input type="hidden" name="id" th:value="${id}"><input type="hidden" name="category" th:value="${category}">
+<label>Club name</label><input name="name" th:value="${name}" required>
+<label>Intro</label><textarea name="intro" rows="5" required th:text="${intro}"></textarea>
+<button class="btn" type="submit">Save</button></form>
+</main></body></html>
